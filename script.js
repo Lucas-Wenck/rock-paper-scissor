@@ -9,7 +9,7 @@ function getComputerChoice(){
 }
 
 function round(){
-    let player = prompt(`Please choose rock paper or scissors`)
+    let player = prompt(`Please choose rock, paper or scissors`)
     player = player.trim();
     player = player.charAt(0).toUpperCase() + player.slice(1).toLowerCase();
     if(player != `Rock` && player != `Paper` && player != `Scissors`){
