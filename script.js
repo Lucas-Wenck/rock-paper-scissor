@@ -1,5 +1,7 @@
 const options = [`Rock`, `Paper`, `Scissors`]
 let compChoice;
+let playerVicCount = 0;
+let compVicCount = 0;
 
 function getComputerChoice(){
     compChoice = Math.floor(Math.random() * options.length);
@@ -11,20 +13,28 @@ function round(){
     player = player.trim();
     player = player.charAt(0).toUpperCase() + player.slice(1).toLowerCase();
     if(player != `Rock` && player != `Paper` && player != `Scissors`){
-        return `Thats not an option`
+        console.log(`Thats not an option`);
     }
     else{
         getComputerChoice();
         if((player == `Rock` && compChoice == `Scissors`) || (player == `Paper` && compChoice == `Rock`) || (player == `Scissors` && compChoice == `Paper`)){
-            return `Congratulations! ${player} beats ${compChoice}!`;
+            playerVicCount = playerVicCount + 1;
+            console.log(`Congratulations! ${player} beats ${compChoice}!`);
         }
         else if((player == `Rock` && compChoice == `Paper`) || (player == `Paper` && compChoice == `Scissors`) || (player == `Scissors` && compChoice == `Rock`)){
-            return `Sorry! ${compChoice} beats ${player}.`;
+            compVicCount = compVicCount + 1;
+            console.log(`Sorry! ${compChoice} beats ${player}.`);
         }
         else{
-            console.log(player)
-            console.log(compChoice)
-            return `A draw!`
+            console.log(`A draw!`);
         }
     }
+}
+
+function game(){
+    for(let i = 0; i < 5; i++){
+        round();
+
+    }
+    return `The game was ${playerVicCount} for you and ${compVicCount} for me! Good Game!`
 }
