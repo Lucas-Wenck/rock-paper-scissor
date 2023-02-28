@@ -13,10 +13,12 @@ function round(){
     if((player == `Rock` && compChoice == `Scissors`) || (player == `Paper` && compChoice == `Rock`) || (player == `Scissors` && compChoice == `Paper`)){
         playerVicCount = playerVicCount + 1;
         this.document.getElementById('talk').innerText = `Congrats! ${player} beats ${compChoice}!`;
+        this.document.getElementById('playerScore').innerText = `${playerVicCount}`;
     }
     else if((player == `Rock` && compChoice == `Paper`) || (player == `Paper` && compChoice == `Scissors`) || (player == `Scissors` && compChoice == `Rock`)){
         compVicCount = compVicCount + 1;
         this.document.getElementById('talk').innerText = `Sorry! ${compChoice} beats ${player}.`;
+        this.document.getElementById('compScore').innerText = `${compVicCount}`;
     }
     else{
         this.document.getElementById('talk').innerText = `A draw!`;
