@@ -9,32 +9,24 @@ function getComputerChoice(){
 }
 
 function round(){
-    let player = prompt(`Please choose rock, paper or scissors`)
-    player = player.trim();
-    player = player.charAt(0).toUpperCase() + player.slice(1).toLowerCase();
-    if(player != `Rock` && player != `Paper` && player != `Scissors`){
-        console.log(`Thats not an option`);
+    getComputerChoice();
+    if((player == `Rock` && compChoice == `Scissors`) || (player == `Paper` && compChoice == `Rock`) || (player == `Scissors` && compChoice == `Paper`)){
+        playerVicCount = playerVicCount + 1;
+        console.log(`Congratulations! ${player} beats ${compChoice}!`);
+    }
+    else if((player == `Rock` && compChoice == `Paper`) || (player == `Paper` && compChoice == `Scissors`) || (player == `Scissors` && compChoice == `Rock`)){
+        compVicCount = compVicCount + 1;
+        console.log(`Sorry! ${compChoice} beats ${player}.`);
     }
     else{
-        getComputerChoice();
-        if((player == `Rock` && compChoice == `Scissors`) || (player == `Paper` && compChoice == `Rock`) || (player == `Scissors` && compChoice == `Paper`)){
-            playerVicCount = playerVicCount + 1;
-            console.log(`Congratulations! ${player} beats ${compChoice}!`);
-        }
-        else if((player == `Rock` && compChoice == `Paper`) || (player == `Paper` && compChoice == `Scissors`) || (player == `Scissors` && compChoice == `Rock`)){
-            compVicCount = compVicCount + 1;
-            console.log(`Sorry! ${compChoice} beats ${player}.`);
-        }
-        else{
-            console.log(`A draw!`);
-        }
+        console.log(`A draw!`);
     }
 }
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
 
-function game(){
-    for(let i = 0; i < 5; i++){
-        round();
-
-    }
-    return `The game was ${playerVicCount} for you and ${compVicCount} for me! Good Game!`
-}
+rock.addEventListener('click', () =>{
+    player = 'Rock';
+    round();
+})
